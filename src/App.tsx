@@ -1,18 +1,10 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import TriageForm from './pages/TriageForm';
 import Sonuc from './pages/Sonuc';
 import RehberIndex from './pages/RehberIndex';
 import RehberDetay from './pages/RehberDetay';
-
-function Yakinda() {
-  return (
-    <main>
-      <h1>Yakında</h1>
-      <p>Bu bölüm üzerinde çalışıyoruz.</p>
-    </main>
-  );
-}
+import MusavirForm from './pages/MusavirForm';
 
 function App() {
   return (
@@ -23,8 +15,8 @@ function App() {
           <Route path="/sonuc" element={<Sonuc />} />
           <Route path="/rehber" element={<RehberIndex />} />
           <Route path="/rehber/:slug" element={<RehberDetay />} />
-          <Route path="/musavir" element={<Yakinda />} />
-          <Route path="*" element={<Yakinda />} />
+          <Route path="/musavir" element={<MusavirForm />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>

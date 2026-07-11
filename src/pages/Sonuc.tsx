@@ -63,7 +63,7 @@ function Sonuc() {
           </Link>
         )}
         {sonuc.oneri === 'MUSAVIR_TUT' && (
-          <Link className="btn" to="/musavir">
+          <Link className="btn" to="/musavir" state={{ girdi, sonuc }}>
             Müşavir talebini başlat
           </Link>
         )}
