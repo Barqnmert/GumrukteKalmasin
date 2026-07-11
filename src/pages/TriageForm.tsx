@@ -5,6 +5,7 @@ import { kararVer } from '../lib/decisionEngine';
 import { kaydetBasvuru } from '../lib/basvuru';
 import { getEurTry } from '../lib/kur';
 import type { KurBilgisi } from '../lib/kur';
+import { useSeo } from '../lib/seo';
 import type {
   Durum,
   GonderiTipi,
@@ -14,6 +15,13 @@ import type {
 } from '../lib/types';
 
 function TriageForm() {
+  useSeo({
+    baslik: 'Gümrük Vergisi Hesapla — 2026 Güncel Oranlar, Ücretsiz',
+    aciklama:
+      'Paket değeri, menşe ve kategoriyi girin; tek ve maktu vergi (AB %30 / diğer %60), ÖTV ve ardiye dahil toplam maliyeti anında görün. Üyelik gerekmez.',
+    yol: '/hesapla',
+  });
+
   const navigate = useNavigate();
   const [gonderiTipi, setGonderiTipi] = useState<GonderiTipi>('bireysel');
   const [urunBedeli, setUrunBedeli] = useState('');

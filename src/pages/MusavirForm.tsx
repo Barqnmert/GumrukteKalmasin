@@ -3,6 +3,7 @@ import type { FormEvent } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { kararVer } from '../lib/decisionEngine';
 import { kaydetBasvuru } from '../lib/basvuru';
+import { useSeo } from '../lib/seo';
 import type { KararSonucu, Kategori, PaketGirdisi } from '../lib/types';
 
 interface GelenState {
@@ -11,6 +12,13 @@ interface GelenState {
 }
 
 function MusavirForm() {
+  useSeo({
+    baslik: 'Gümrük Müşaviri Bul — Doğrulanmış Firmalarla Ücretsiz Eşleştirme',
+    aciklama:
+      'Paketiniz standart beyanname mi istiyor? TOBB siciline kayıtlı, doğrulanmış gümrük müşavirlik firmalarıyla sizi ücretsiz eşleştirelim. 1 iş günü içinde dönüş.',
+    yol: '/musavir',
+  });
+
   const location = useLocation();
   const gelen = (location.state ?? {}) as GelenState;
 

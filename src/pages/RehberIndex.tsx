@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
 import { REHBERLER } from '../content/rehberler';
+import { useSeo } from '../lib/seo';
 
 function RehberIndex() {
+  useSeo({
+    baslik: 'Gümrükten Paket Çekme Rehberleri — AliExpress, Amazon, Hediye',
+    aciklama:
+      'Müşavire para ödemeden paketinizi gümrükten kendiniz çekin: AliExpress/Temu, Amazon/eBay, hediye gönderisi ve iş numunesi için adım adım 2026 rehberleri.',
+    yol: '/rehber',
+  });
+
   return (
     <main>
       <header className="sayfa-baslik">

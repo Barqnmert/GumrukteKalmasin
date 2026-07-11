@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /sonuc
+
+Sitemap: https://www.xn--gmrktekalmasn-wobc17f.com/sitemap.xml

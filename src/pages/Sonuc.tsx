@@ -1,4 +1,5 @@
 import { Link, Navigate, useLocation } from 'react-router-dom';
+import { useSeo } from '../lib/seo';
 import type { KararSonucu, PaketGirdisi } from '../lib/types';
 
 const ONERI_GORUNUM = {
@@ -41,6 +42,13 @@ interface SonucState {
 }
 
 function Sonuc() {
+  useSeo({
+    baslik: 'Hesap Sonucu',
+    aciklama: 'Paketiniz için kişisel gümrük maliyeti dökümü ve önerimiz.',
+    yol: '/hesapla', // sonuç duruma bağlı; canonical hesap sayfasına işaret eder
+    indexleme: false,
+  });
+
   const location = useLocation();
   const state = location.state as SonucState | null;
 

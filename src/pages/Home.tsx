@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useSeo } from '../lib/seo';
 
 const ORAN_KARTLARI = [
   {
@@ -69,9 +70,30 @@ const SSS = [
   },
 ];
 
+const FAQ_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: SSS.map((s) => ({
+    '@type': 'Question',
+    name: s.soru,
+    acceptedAnswer: { '@type': 'Answer', text: s.cevap },
+  })),
+};
+
 function Home() {
+  useSeo({
+    baslik: 'Gümrük Vergisi Hesaplama 2026 — Paketim Gümrükte, Ne Yapmalıyım?',
+    aciklama:
+      '30 € muafiyeti kalktı: AliExpress, Temu, Amazon paketinize ne kadar gümrük vergisi çıkacağını 2026 oranlarıyla ücretsiz hesaplayın. Değmezse söyleriz; değerse adım adım kendiniz çekin veya müşavir bulun.',
+    yol: '/',
+  });
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }}
+      />
       <section className="hero">
         <p className="hero-ust">6 Şubat 2026: 30 € muafiyeti kalktı</p>
         <h1>

@@ -1,9 +1,16 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { rehberBul } from '../content/rehberler';
+import { useSeo } from '../lib/seo';
 
 function RehberDetay() {
   const { slug } = useParams<{ slug: string }>();
   const rehber = slug ? rehberBul(slug) : undefined;
+
+  useSeo({
+    baslik: rehber?.baslik ?? 'Rehber',
+    aciklama: rehber?.ozet ?? '',
+    yol: `/rehber/${slug ?? ''}`,
+  });
 
   if (!rehber) {
     return <Navigate to="/rehber" replace />;
