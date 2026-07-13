@@ -149,6 +149,9 @@ function Sonuc() {
   const gorunum = ONERI_GORUNUM[sonuc.oneri];
   const d = sonuc.dokum;
   const maktu = d.rejim === 'MAKTU';
+  // Cebinden gerçekten çıkan tutar: emsal navlun yalnızca vergi matrahına
+  // eklenen kurgusal kalemdir, ödemeye dahil değildir.
+  const odenenUrun = d.cif - d.emsalNavlun;
 
   // Müşavir hizmeti henüz yayında değilken müşavire yönlendiren
   // butonların altında gösterilen bilgilendirme.
@@ -333,8 +336,15 @@ function Sonuc() {
                     <td className="tutar">{tl(d.ardiye)} TL</td>
                   </tr>
                   <tr className="toplam">
-                    <td>Kendin yaparsan toplam ek maliyet</td>
-                    <td className="tutar">{tl(d.toplamKendinYap)} TL</td>
+                    <td>
+                      Kendin yaparsan toplam maliyet
+                      <span className="ipucu" style={{ display: 'block' }}>
+                        ürün + kargo + sigorta + vergiler + ardiye
+                      </span>
+                    </td>
+                    <td className="tutar">
+                      {tl(odenenUrun + d.toplamKendinYap)} TL
+                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -351,8 +361,15 @@ function Sonuc() {
                     </td>
                   </tr>
                   <tr className="toplam">
-                    <td>Müşavirli toplam (orta değerle)</td>
-                    <td className="tutar">{tl(d.toplamMusavirli)} TL</td>
+                    <td>
+                      Müşavirli toplam maliyet
+                      <span className="ipucu" style={{ display: 'block' }}>
+                        yukarıdaki toplam + müşavirlik ücreti (orta değerle)
+                      </span>
+                    </td>
+                    <td className="tutar">
+                      {tl(odenenUrun + d.toplamMusavirli)} TL
+                    </td>
                   </tr>
                 </tbody>
               </table>
